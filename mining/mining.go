@@ -71,13 +71,13 @@ func preCheck(assetInfo *utils.AssetInfoRsp) error {
 		return err
 	}
 
-//	if time.Now().Unix()-lastMintTime < assetInfo.Result.Options.MintInterval {
-//	return errors.New("less than the mint interval")
-//	}
+	if time.Now().Unix()-lastMintTime < assetInfo.Result.Options.MintInterval {
+		errors.New("DISS=>less than the mint interval")
+	}
 
-//	if mintInfo.Result.MintCount >= maxMintCountLimit {
-//		return errors.New("address had mint max count")
-//	}
+	if mintInfo.Result.MintCount >= maxMintCountLimit {
+		errors.New("DISS=>address had mint max count")
+	}
 
 	if mintInfo.Result.Amount+currentSupply > maxSupply {
 		return errors.New("beyond max mint amount")
